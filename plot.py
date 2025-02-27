@@ -1,0 +1,1 @@
+# plotting temp vs average magnetization 
