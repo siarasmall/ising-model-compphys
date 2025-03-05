@@ -1,7 +1,7 @@
 import numpy as np
 from node import Node
 
-class SquareLattice():
+class Lattice():
     def __init__(self, N, width, height) -> None:
         self.N = N
         self.width = width
@@ -22,25 +22,20 @@ class SquareLattice():
     def is_neighbor(self, a, b):
         # a, b are 1d indices
         if a == b:
-            # same node
-            return 0
+            return 0 # Same node
         node_1 = self.get_node(a)
         node_2 = self.get_node(b)
-        if node_1.get_row() == node_2.get_row() and node_1.get_col() != node_2.get_col():
-            if abs(node_1.get_col() - node_2.get_col()) == 1:
-                # neighbors by column
-                return 1 
+        row_diff = abs(node_1.row - node_2.row)
+        col_diff = abs(node_1.col - node_2.col)
 
-        if node_1.get_row() != node_2.get_row() and node_1.get_col() == node_2.get_col():
-            if abs(node_1.get_row() - node_2.get_row()) == 1:
-                # neighbors by row
-                return 1 
-        # not neighbors
-        return 0
+        if (row_diff == 1 and col_diff == 0) or (row_diff == 0 and col_diff == 1):
+            return 1 # Neighbors
+
+        return 0  # Not neighbors
 
             
     def print_test(self):
         for i in range(self.N):
             node = self.get_node(i)
-            print(f"Row: {node.get_row()}, col: {node.get_col()}, idx: {node.get_idx()}, spin: {node.get_spin()}")
+            print(f"Row: {node.row()}, col: {node.col()}, idx: {node.idx()}, spin: {node.spin()}")
 

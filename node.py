@@ -5,16 +5,16 @@ class Node():
         self.idx = idx
         self.spin = spin
 
-    def get_row(self):
+    def row(self):
         return self.row
 
-    def get_col(self):
+    def col(self):
         return self.col
 
-    def get_idx(self):
+    def idx(self):
         return self.idx
 
-    def get_spin(self):
+    def spin(self):
         return self.spin
 
     def set_row(self, i):
