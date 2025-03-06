@@ -2,7 +2,7 @@ import numpy as np
 from node import Node
 
 class Lattice():
-    def __init__(self, N, width, height) -> None:
+    def __init__(self, N: int, width: int, height: int) -> None:
         self.N = N
         self.width = width
         self.height = height
@@ -11,7 +11,7 @@ class Lattice():
     def init_lattice(self):
         self.lattice = np.zeros(self.N, dtype= Node)
         for row in range(self.height):
-            for col in range(self.width):
+            for col in range(self.width):x
                 spin = np.random.choice([-1, 1])
                 idx = (row * self.width) + col
                 self.lattice[idx] = Node(row, col, idx, spin)
@@ -33,6 +33,8 @@ class Lattice():
 
         return 0  # Not neighbors
 
+    def flip(self, i):
+        self.lattice[i].flip()
             
     def print_test(self):
         for i in range(self.N):

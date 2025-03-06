@@ -28,3 +28,6 @@ class Node():
 
     def set_spin(self, i):
         self.spin = i
+
+    def flip(self):
+        self.spin *= -1
