@@ -37,5 +37,5 @@ class Lattice():
     def print_test(self):
         for i in range(self.N):
             node = self.get_node(i)
-            print(f"Row: {node.row()}, col: {node.col()}, idx: {node.idx()}, spin: {node.spin()}")
+            print(f"Row: {node.row}, col: {node.col}, idx: {node.idx}, spin: {node.spin}")
 

@@ -15,6 +15,9 @@ class AdjacencyMatrix():
                 is_neighbor = self.lattice.is_neighbor(node_idx, other_node_idx)
                 self.AdjacencyMatrix[node_idx][other_node_idx] = is_neighbor
 
+    def get_lattice(self):
+        return self.lattice
+
     def print_test(self):
         for node_idx in range(self.N):
             print(f"Elem at {node_idx}: {self.AdjacencyMatrix[node_idx]}")
