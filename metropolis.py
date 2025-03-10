@@ -42,6 +42,7 @@ class Metropolis(Ising):
             delta_E = old_E - new_E
             # Analyze if flip should be kept; if not, flip back
             if delta_E >= 0 or uniform(0, 1) >= pow(e, (-delta_E/ (scipy.constants.k*temp))):
+                # TODO: can also explore exchanging adjacent sites rather than flipping
                 self.lattice.flip(i)
             else:
                 # If flip is kept, increment flip sum

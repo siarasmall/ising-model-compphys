@@ -1,5 +1,3 @@
-# plotting temp vs average magnetization 
-# TODO: siara make scaffolding
 from typing import List
 import matplotlib.pyplot as plt
 

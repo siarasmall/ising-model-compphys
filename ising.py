@@ -48,9 +48,15 @@ class Ising():
         return -J * sigma
 
     def magnetization(self):
+        # TODO: complete
         pass
 
     def temperature(self):
+        # TODO: complete
+        pass
+
+    def iterations_until_equilibrium(self):
+        # TODO: complete
         pass
 
     def print_test(self):

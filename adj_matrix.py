@@ -33,8 +33,7 @@ class AdjacencyMatrix():
         for i in range(self.N):
             adjacency_matrix[i] = []
             for j in range(self.N):
-                is_neighbor = self.lattice.is_neighbor(i, j)
-                if is_neighbor:
+                if self.lattice.is_neighbor(i, j):
                     adjacency_matrix[i].append(j)
         return adjacency_matrix
 

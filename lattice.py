@@ -49,19 +49,22 @@ class Lattice():
         Arguments:
             - a: int = One dimensional index of the first node.
             - b: int = One dimensional index of the second node.
+
+        Returns:
+            True if the nodes are neighbors, False otherwise.
         """
         if a >= self.N or b >= self.N or a == b:
             # Same node or either index is out of bounds
-            return 0 
+            return False
         node_1 = self.get_node(a)
         node_2 = self.get_node(b)
         row_diff = abs(node_1.row - node_2.row)
         col_diff = abs(node_1.col - node_2.col)
         if (row_diff == 1 and col_diff == 0) or (row_diff == 0 and col_diff == 1):
             # Neighbors!
-            return 1 
+            return True
         # Not neighbors :(
-        return 0
+        return False
 
     def flip(self, i):
         """
