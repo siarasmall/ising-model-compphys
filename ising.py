@@ -49,7 +49,7 @@ class Ising():
 
     def magnetization(self):
         # TODO: complete
-        pass
+        return self.lattice.calc_spin_sum() / self.N
 
     def temperature(self):
         # TODO: complete

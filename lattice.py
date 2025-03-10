@@ -77,6 +77,9 @@ class Lattice():
         Gets the total number of elements in the lattice.
         """
         return self.N
+
+    def calc_spin_sum(self):
+        return sum(self.get_node(i).spin for i in range(self.N))
             
     def print_test(self):
         """
