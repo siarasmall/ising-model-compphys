@@ -3,22 +3,48 @@ from lattice import Lattice
 from adj_matrix import AdjacencyMatrix
 
 class Ising():
+    """
+    Simulation of the Ising model of ferromagnetism.
+    """
     def __init__(self, width: int, height: int) -> None:
+        """
+        Initializes an object for the Ising model.
+
+        Arguments:
+            - width: int = Width of the lattice
+            - height: int = Height of the lattice
+        """
+        # Initializes dimensions
         self.width = width
         self.height = height
         self.N = width*height
-        self.lattice = Lattice(self.N, width, height)
-        self.adj_matrix = AdjacencyMatrix(self.N, self.lattice)
+        # Initializes lattice and adjacency matrix
+        self.lattice = Lattice(width, height)
+        self.adj_matrix = AdjacencyMatrix(self.lattice)
 
     def get_matrix(self):
+        """
+        Returns the adjacency matrix.
+        """
         return self.adj_matrix
 
     def get_lattice(self):
+        """
+        Returns the lattice.
+        """
         return self.lattice
 
-    def hamiltonian(self, i, J = 1):
-        # TODO: ask where J is coming from/how to calc
+    def hamiltonian(self, i: int, J = 1):
+        """
+        Calculates the Hamiltonian.
+
+        Arguments:
+            - i: int = Index of the lattice site for which to calculate the Hamiltonian.
+            - J: int = Exchange parameter. Defaults to 1.
+        """
+        # Calculate Sigma
         sigma = sum((self.adj_matrix.get_element(i, j) * self.lattice.get_node(i).spin * self.lattice.get_node(j).spin) for j in range(self.N) if i != j)
+        # Calculate Hamiltonian
         return -J * sigma
 
     def magnetization(self):

@@ -1,32 +1,70 @@
-from node import Node
-import numpy as np
 from lattice import Lattice
 
 class AdjacencyMatrix():
-    def __init__(self, N: int, lattice: Lattice) -> None:
-        self.N = N
+    """
+    Adjacency matrix of a Ising model lattice containing information about 
+    the neighbors of each node.
+
+    Format: 
+        {
+            i: [indices of neighbors]
+        }
+        # TODO: is this phrasing confusing lol
+        - Dictionary of lattice indices mapping to all other lattice indices 
+        they are next to in the lattice.
+    """
+    def __init__(self, lattice: Lattice) -> None:
+        """
+        Initializes an AdjacencyMatrix.
+
+        Arguments:
+            - Lattice: Lattice from which to construct the adjacency matrix.
+        """
         self.lattice = lattice
-        self.adjacency_matrix = np.zeros([self.N, self.N], dtype=int)
-        self.generate_matrix()
+        self.N = self.lattice.get_dim()
+        self.adjacency_matrix = self.generate_matrix()
 
     def generate_matrix(self):
-        for node_idx in range(self.N):
-            for other_node_idx in range(self.N):
-                is_neighbor = self.lattice.is_neighbor(node_idx, other_node_idx)
-                self.adjacency_matrix[node_idx][other_node_idx] = is_neighbor
+        """
+        Generates the adjacency matrix for a given lattice. Returns a dictionary 
+        mapping indices to a list of their neighbors.
+        """
+        adjacency_matrix = {}
+        for i in range(self.N):
+            adjacency_matrix[i] = []
+            for j in range(self.N):
+                is_neighbor = self.lattice.is_neighbor(i, j)
+                if is_neighbor:
+                    adjacency_matrix[i].append(j)
+        return adjacency_matrix
 
     def get_lattice(self):
+        """
+        Returns the lattice for the given adjacency matrix.
+        """
         return self.lattice
 
-    def get_row(self, idx):
+    def get_neighbors(self, idx):
+        """
+        Get a list of neighbors of a given lattice index.
+        """
         return self.adjacency_matrix[idx]
 
     def get_matrix(self):
+        """
+        Returns the given adjacency matrix.
+        """
         return self.adjacency_matrix
 
-    def get_element(self, row, col):
-        return self.adjacency_matrix[row][col]
+    def get_element(self, i, j):
+        """
+        Returns 1 if i, j are neighbors in the adjacency matrix; 0 otherwise.
+        """
+        if j in self.adjacency_matrix[i]: return 1
+        else: return 0
 
     def print_test(self):
-        for node_idx in range(self.N):
-            print(f"Elem at {node_idx}: {self.adjacency_matrix[node_idx]}")
+        """
+        Prints dictionary of adjacency matrix.
+        """
+        print(self.adjacency_matrix)
