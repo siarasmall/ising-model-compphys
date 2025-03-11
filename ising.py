@@ -34,13 +34,13 @@ class Ising():
         """
         return self.lattice
 
-    def hamiltonian(self, i: int, J = 1):
+    def hamiltonian(self, i: int, J = 0.5):
         """
         Calculates the Hamiltonian.
 
         Arguments:
             - i: int = Index of the lattice site for which to calculate the Hamiltonian.
-            - J: int = Exchange parameter. Defaults to 1.
+            - J: int = Exchange parameter. Defaults to 0.5.
         """
         # Calculate Sigma
         sigma = sum((self.adj_matrix.get_element(i, j) * self.lattice.get_node(i).spin * self.lattice.get_node(j).spin) for j in range(self.N) if i != j)
