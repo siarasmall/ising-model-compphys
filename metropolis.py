@@ -18,7 +18,7 @@ class Metropolis(Ising):
 
     def metropolis_with_convergence(self, temp) -> int:
         """
-        Performs the Metropolis algorithm.
+        Performs the Metropolis algorithm until convergence. 
 
         Arguments:
             - time_steps: int = Number of time steps to run the algorithm.
@@ -61,18 +61,17 @@ class Metropolis(Ising):
 
     def metropolis_with_timesteps(self, temp, timesteps: int) -> tuple:
         """
-        Performs the Metropolis algorithm while recording magnetization at each timestep.
+        Performs the Metropolis algorithm for a set number of timesteps while recording 
+        magnetization at each timestep.
 
         Arguments:
-            temp: int
-                Temperature in Kelvin.
-            timesteps: int
-                Number of timesteps to run the algorithm.
+            temp: int = Temperature (K).
+            timesteps: int = Number of timesteps to run the algorithm for.
 
         Returns:
             A tuple containing:
             - flips: int
-                The number of successful flips during the simulation.
+                The number of successful flips.
             - mag_time_series: list
                 A list of magnetization values recorded at each timestep.
         """
@@ -96,7 +95,6 @@ class Metropolis(Ising):
             else:
                 # If flip is kept, increment flip sum
                 flips += 1
-
             # Save magnetization at current timestep
             mag_time_series.append(self.magnetization())
 

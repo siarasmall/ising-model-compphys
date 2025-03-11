@@ -48,16 +48,7 @@ class Ising():
         return -J * sigma
 
     def magnetization(self):
-        # TODO: complete
         return self.lattice.calc_spin_sum() / self.N
-
-    def temperature(self):
-        # TODO: complete
-        pass
-
-    def iterations_until_equilibrium(self):
-        # TODO: complete
-        pass
 
     def print_test(self):
         # TODO: print both and make pretty
