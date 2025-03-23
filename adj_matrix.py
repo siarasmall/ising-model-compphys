@@ -9,7 +9,6 @@ class AdjacencyMatrix():
         {
             i: [indices of neighbors]
         }
-        # TODO: is this phrasing confusing lol
         - Dictionary of lattice indices mapping to all other lattice indices 
         they are next to in the lattice.
     """
