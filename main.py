@@ -1,7 +1,6 @@
 from metropolis import Metropolis
 from vis import plot_mag_v_temp, plot_mag_v_time, visualize_lattice
-import numpy as np
-from copy import copy, deepcopy
+from copy import deepcopy
 
 
 def main():
@@ -17,7 +16,7 @@ def main():
     for temp in temps:
     # temp = 5
         algo = Metropolis(width, height)
-        flips, current_mags, lattices = algo.metropolis(temp, timesteps)
+        current_mags, lattices = algo.metropolis(temp, timesteps)
         mags_for_temp.append((deepcopy(current_mags), temp))
     plot_mag_v_time(list(range(timesteps)), mags_for_temp, "Metropolis", f"Square {width} by {height}")
     

@@ -36,27 +36,21 @@ class AdjacencyMatrix():
                     adjacency_matrix[i].append(j)
         return adjacency_matrix
 
-    def get_lattice(self):
-        """
-        Returns the lattice for the given adjacency matrix.
-        """
-        return self.lattice
-
     def get_neighbors(self, idx):
         """
-        Get a list of neighbors of a given lattice index.
+        Get a list of neighbors of a node at the given index.
         """
         return self.adjacency_matrix[idx]
 
     def get_matrix(self):
         """
-        Returns the given adjacency matrix.
+        Returns the adjacency matrix.
         """
         return self.adjacency_matrix
 
     def get_element(self, i, j):
         """
-        Returns 1 if i, j are neighbors in the adjacency matrix; 0 otherwise.
+        Returns 1 if the nodes at indices i, j are neighbors in the lattice; 0 otherwise.
         """
         if j in self.adjacency_matrix[i]: return 1
         else: return 0

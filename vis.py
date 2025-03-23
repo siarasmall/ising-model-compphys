@@ -1,11 +1,9 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import numpy as np
-from mpl_toolkits.mplot3d import axes3d
 
 
 def plot_mag_v_temp(temps, mags, algo, lattice):
-    # TODO: dont like how the code was organized here. make more OO
     """
     Plots magnetization as a function of temperature for a particular algorithm and lattice.
     """
@@ -22,6 +20,9 @@ def plot_mag_v_temp(temps, mags, algo, lattice):
     plt.show()
 
 def plot_mag_v_time(times, mags_for_temp, algo, lattice):
+    """
+    Plots magnetization as a function of time for a particular algorithm and lattice.
+    """
     plt.figure(figsize=(12, 7))
     # Generate color range to match temp
     colors = plt.cm.plasma(np.linspace(0, 1, len(mags_for_temp)))
@@ -40,6 +41,9 @@ def plot_mag_v_time(times, mags_for_temp, algo, lattice):
 
 
 def visualize_lattice(lattice_series):
+    """
+    Animate lattice at each time step.
+    """
     frames = [lat.get_spin_matrix() for lat in lattice_series]
 
     print(frames)
